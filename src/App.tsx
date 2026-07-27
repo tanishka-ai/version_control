@@ -1,8 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import { Header } from "@/components/common/Header";
 import { Sidebar } from "@/components/common/Sidebar";
+import VersionListing from "@/pages/VersionListing";
 import CreateRelease from "@/pages/CreateRelease";
 import EditRelease from "@/pages/EditRelease";
+import PageNotFound from "@/pages/PageNotFound";
 
 export default function App() {
   return (
@@ -12,8 +14,10 @@ export default function App() {
         <Sidebar />
         <main className="min-w-0 flex-1 pb-16">
           <Routes>
+            <Route path="/" element={<VersionListing />} />
             <Route path="/releases/new" element={<CreateRelease />} />
             <Route path="/releases/:id/edit" element={<EditRelease />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </main>
       </div>
