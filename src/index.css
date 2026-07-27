@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surface palette — warmer, editorial */
+  --color-background: #f6f5f2;
+  --color-foreground: #101828;
+  --color-card: #ffffff;
+  --color-card-foreground: #101828;
+  --color-muted: #f1efe9;
+  --color-muted-foreground: #6b6558;
+  --color-border: #e6e2d8;
+  --color-input: #dedad0;
+  --color-ring: #6d28d9;
+
+  /* Brand */
+  --color-primary: #6d28d9; /* violet-700 */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #eef0ff;
+  --color-secondary-foreground: #1e1b4b;
+  --color-accent: #eef7f2;
+  --color-accent-foreground: #065f46;
+
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+
+  /* Sidebar (dark canvas) */
+  --color-sidebar: #0b0f19;
+  --color-sidebar-foreground: #cfd3dc;
+  --color-sidebar-muted: #1c2233;
+  --color-sidebar-accent: #7c3aed;
+
+  --radius: 0.75rem;
+
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display:
+    "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(1200px 500px at -10% -20%, rgba(124, 58, 237, 0.08), transparent 60%),
+    radial-gradient(900px 400px at 110% 10%, rgba(6, 182, 212, 0.06), transparent 55%);
+  background-attachment: fixed;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Grid noise background used on the sidebar */
+.sidebar-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Focus rings */
+*:focus-visible {
+  outline: none;
+}
+
+/* Rich text placeholder */
+[contenteditable="true"]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-muted-foreground);
+  pointer-events: none;
+}
+
+/* Subtle glass card */
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.72));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Animated gradient border for hero-ish cards */
+.gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  background: white;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4 45%, #f59e0b);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Scrollbar polish */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
